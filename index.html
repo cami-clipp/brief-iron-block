@@ -697,7 +697,7 @@
   </h2>
   <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-bottom:56px;letter-spacing:0.02em;">Respondé con la mayor honestidad posible. No hay respuestas correctas, solo información que nos ayuda a trabajar mejor juntos.</p>
 
-  <form id="brief-form" novalidate>
+  <form id="brief-form" action="https://formspree.io/f/aguilar1601cami@gmail.com" method="POST" novalidate>
 
     <!-- A. NEGOCIO Y PRODUCTO -->
     <div class="subseccion">
@@ -1099,10 +1099,25 @@
   });
 
   function enviarBrief() {
-    document.getElementById('btn-enviar').style.display = 'none';
-    document.getElementById('msg-exito').classList.add('visible');
-    document.getElementById('btn-pdf').classList.add('visible');
-    document.getElementById('btn-pdf').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var form = document.getElementById('brief-form');
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        document.getElementById('btn-enviar').style.display = 'none';
+        document.getElementById('msg-exito').classList.add('visible');
+        document.getElementById('btn-pdf').classList.add('visible');
+        document.getElementById('btn-pdf').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        alert('Hubo un error al enviar. Por favor intentá de nuevo.');
+      }
+    }).catch(function() {
+      alert('Hubo un error al enviar. Por favor intentá de nuevo.');
+    });
   }
 </script>
 
