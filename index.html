@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron Block Módulos · Brief de Discovery · cami.clipp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ladrillo: #B5432A;
+    --negro: #1A1A1A;
+    --crema: #FAF6F1;
+    --lino: #EDE3D6;
+    --gris: #7A706B;
+    --blanco: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--negro);
+    background: var(--crema);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PORTADA ── */
+  .portada {
+    background: var(--ladrillo);
+    color: var(--blanco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 56px 64px 48px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo svg { width: 36px; height: 36px; }
+
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-cami {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--blanco);
+    letter-spacing: 0.01em;
+  }
+  .logo-clipp {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--blanco);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .portada-centro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 40px;
+  }
+
+  .portada-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 28px;
+  }
+
+  .portada-titulo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1.0;
+    color: var(--blanco);
+    letter-spacing: -0.02em;
+  }
+
+  .portada-titulo em {
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+  }
+
+  .portada-subtitulo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .portada-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 24px;
+  }
+
+  .portada-fecha {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  .portada-linea {
+    width: 80px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* ── SECCIONES ── */
+  section {
+    padding: 80px 64px;
+  }
+
+  @media (max-width: 768px) {
+    .portada { padding: 40px 28px 36px; }
+    section { padding: 56px 24px; }
+  }
+
+  .section-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ladrillo);
+    margin-bottom: 12px;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--ladrillo);
+    margin-bottom: 48px;
+  }
+
+  .section-titulo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .section-titulo em {
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+  }
+
+  /* ── SECCIÓN 1 — CONTEXTO ── */
+  .sec-contexto { background: var(--crema); }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--lino);
+    padding: 32px 28px;
+  }
+
+  .card-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ladrillo);
+    margin-bottom: 20px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--negro);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ladrillo);
+    font-size: 12px;
+  }
+
+  .card-estrategia {
+    background: var(--negro);
+    padding: 40px 36px;
+    grid-column: 1 / -1;
+  }
+
+  .card-estrategia .card-label { color: var(--ladrillo); }
+
+  .card-estrategia blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2.5vw, 24px);
+    line-height: 1.6;
+    color: var(--blanco);
+  }
+
+  .card-estrategia blockquote strong {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--ladrillo);
+  }
+
+  /* ── SECCIÓN 2 — FORMULARIO ── */
+  .sec-form { background: var(--lino); }
+
+  .subseccion {
+    margin-bottom: 64px;
+  }
+
+  .subseccion:last-child { margin-bottom: 0; }
+
+  .sub-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ladrillo);
+    margin-bottom: 8px;
+  }
+
+  .sub-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--ladrillo);
+    margin-bottom: 36px;
+  }
+
+  .sub-titulo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 32px;
+    color: var(--negro);
+  }
+
+  /* CAMPO */
+  .campo {
+    margin-bottom: 36px;
+  }
+
+  .campo label,
+  .campo-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 10px;
+  }
+
+  .campo input[type="text"],
+  .campo input[type="number"],
+  .campo input[type="time"],
+  .campo textarea,
+  .campo select {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--ladrillo);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--negro);
+    padding: 8px 0;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .campo input[type="text"]:focus,
+  .campo input[type="number"]:focus,
+  .campo input[type="time"]:focus,
+  .campo textarea:focus,
+  .campo select:focus {
+    border-bottom-color: var(--negro);
+  }
+
+  .campo textarea {
+    min-height: 88px;
+    resize: vertical;
+    line-height: 1.65;
+  }
+
+  .campo select {
+    cursor: pointer;
+  }
+
+  /* RADIO / CHECKBOX */
+  .opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .opcion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 32px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  .opcion input[type="radio"],
+  .opcion input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--ladrillo);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: background 0.15s;
+  }
+
+  .opcion input[type="radio"] { border-radius: 50%; }
+
+  .opcion input[type="radio"]:checked,
+  .opcion input[type="checkbox"]:checked {
+    background: var(--ladrillo);
+  }
+
+  .opcion input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--blanco);
+  }
+
+  .opcion input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    color: var(--blanco);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .opcion span {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--negro);
+  }
+
+  /* GRID CAMPOS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 48px;
+  }
+
+  @media (max-width: 600px) {
+    .grid-2, .grid-2x2 { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  /* nota helper */
+  .nota {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* condicional pauta */
+  .condicional {
+    margin-top: 24px;
+    padding-left: 20px;
+    border-left: 2px solid var(--lino);
+    display: none;
+  }
+
+  .condicional.visible { display: block; }
+
+  /* ── CIERRE ── */
+  .sec-cierre {
+    background: var(--ladrillo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 80px 64px;
+  }
+
+  .cierre-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 20px;
+  }
+
+  .cierre-texto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.55;
+    color: var(--blanco);
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+
+  .btn-enviar {
+    background: var(--blanco);
+    color: var(--ladrillo);
+    border: none;
+    padding: 18px 56px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 56px;
+  }
+
+  .btn-enviar:hover {
+    background: var(--negro);
+    color: var(--blanco);
+  }
+
+  .cierre-divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 32px;
+  }
+
+  .cierre-logo { margin-bottom: 16px; }
+
+  .logo-blanco .logo-cami,
+  .logo-blanco .logo-clipp { color: var(--blanco); }
+
+  .cierre-contacto {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.08em;
+  }
+
+  /* MENSAJE ÉXITO */
+  #msg-exito {
+    display: none;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    padding: 24px 32px;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  #msg-exito.visible { display: block; }
+
+  /* BOTÓN PDF */
+  .btn-pdf {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 14px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-bottom: 56px;
+    display: none;
+  }
+  .btn-pdf:hover {
+    background: rgba(255,255,255,0.12);
+    color: var(--blanco);
+    border-color: rgba(255,255,255,0.6);
+  }
+  .btn-pdf.visible { display: inline-block; }
+
+  /* PRINT */
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    html, body { margin: 0; padding: 0; }
+
+    .btn-enviar, .btn-pdf, #msg-exito { display: none !important; }
+
+    /* Portada: página completa */
+    .portada {
+      min-height: 100vh;
+      padding: 56px 64px 48px;
+      page-break-after: always;
+      break-after: page;
+      background: #B5432A !important;
+    }
+
+    /* Secciones con padding propio para simular márgenes */
+    section {
+      padding: 48px 64px;
+    }
+
+    .sec-cierre { background: #B5432A !important; padding: 64px; }
+    .sec-contexto { background: #FAF6F1 !important; }
+    .sec-form { background: #EDE3D6 !important; }
+    .card { background: #EDE3D6 !important; }
+    .card-estrategia { background: #1A1A1A !important; }
+
+    /* Evitar cortes dentro de bloques */
+    .subseccion { page-break-inside: avoid; break-inside: avoid; }
+    .campo { page-break-inside: avoid; break-inside: avoid; }
+    .card { page-break-inside: avoid; break-inside: avoid; }
+    .cards-grid { page-break-inside: avoid; break-inside: avoid; }
+
+    .campo input, .campo textarea, .campo select {
+      border-bottom: 1.5px solid #B5432A !important;
+    }
+  }
+
+  /* número de pregunta */
+  .n {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--ladrillo);
+    font-size: 13px;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ PORTADA ══════════════════════════════ -->
+<header class="portada">
+  <div class="logo">
+    <svg viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M78,12 L12,12 L12,88 L78,88 L78,72 L28,72 L28,28 L78,28 Z" fill="white"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-cami">cami</span>
+      <span class="logo-clipp">CLIPP</span>
+    </div>
+  </div>
+
+  <div class="portada-centro">
+    <p class="portada-tag">Brief · Onboarding · 2026</p>
+    <h1 class="portada-titulo">
+      Iron Block
+      <em>Módulos</em>
+    </h1>
+    <p class="portada-subtitulo">Onboarding · Brief de Discovery</p>
+  </div>
+
+  <div class="portada-footer">
+    <span class="portada-fecha">27 / 04 / 2026</span>
+    <div class="portada-linea"></div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════ SECCIÓN 1 — CONTEXTO ══════════════════════════════ -->
+<section class="sec-contexto">
+  <p class="section-tag">Llamada 27/04</p>
+  <div class="section-divider"></div>
+  <h2 class="section-titulo">
+    Contexto
+    <em>inicial</em>
+  </h2>
+  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-bottom:40px;letter-spacing:0.02em;">Lo que ya sabemos antes de empezar.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <p class="card-label">Dolor con la gestión anterior</p>
+      <ul>
+        <li>La marca se percibe fría y corporativa, no como la PyME cercana que son</li>
+        <li>Contenido rígido, poco humano, no apto para redes sociales</li>
+        <li>El proveedor anterior no les dedicaba el tiempo esperado</li>
+        <li>Falta de conexión humana en la comunicación</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-label">Lo que el cliente pide</p>
+      <ul>
+        <li>Planificaciones semanales</li>
+        <li>Crear contenido hablando por ellos (con rostro propio + el de ellos)</li>
+        <li>Que llevemos adelante las redes</li>
+        <li>Humanizar la marca · jerarquía visual · rebranding</li>
+        <li>Calendario · estrategia · informada · flexibilidad</li>
+      </ul>
+    </div>
+
+    <div class="card card-estrategia">
+      <p class="card-label">Lectura estratégica preliminar</p>
+      <blockquote>
+        El cliente busca un <strong>partner</strong>, no un proveedor. Quiere que la marca deje de parecer una empresa grande y empiece a comunicar como lo que es: una <strong>PyME santafesina</strong> con producto innovador. El rebranding es tanto <strong>visual como de tono</strong>.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ SECCIÓN 2 — FORMULARIO ══════════════════════════════ -->
+<section class="sec-form">
+  <p class="section-tag">Para completar</p>
+  <div class="section-divider"></div>
+  <h2 class="section-titulo">
+    Cuestionario
+    <em>de Discovery</em>
+  </h2>
+  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-bottom:56px;letter-spacing:0.02em;">Respondé con la mayor honestidad posible. No hay respuestas correctas, solo información que nos ayuda a trabajar mejor juntos.</p>
+
+  <form id="brief-form" novalidate>
+
+    <!-- A. NEGOCIO Y PRODUCTO -->
+    <div class="subseccion">
+      <p class="sub-tag">A</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Negocio y producto</h3>
+
+      <div class="campo">
+        <label><span class="n">01.</span> ¿Cómo le explicarían Iron Block a alguien que nunca escuchó la marca?</label>
+        <textarea name="q01" placeholder="Escribí aquí..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">02.</span> ¿Cuáles son los 3 productos o servicios principales y cuál genera más facturación?</label>
+        <textarea name="q02" placeholder="1. / 2. / 3. — El que más factura:"></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">03.</span> ¿Quién es el cliente ideal?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q03" value="vivienda"> <span>Vivienda particular</span></label>
+          <label class="opcion"><input type="radio" name="q03" value="empresas"> <span>Empresas y oficinas</span></label>
+          <label class="opcion"><input type="radio" name="q03" value="ambos"> <span>Ambos</span></label>
+        </div>
+        <textarea name="q03b" placeholder="¿Por qué? ¿Cuál pesa más hoy?" style="margin-top:16px;"></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">04.</span> ¿Cuál es el ticket promedio y el ciclo de venta típico?</label>
+        <div class="grid-2">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Ticket promedio $</label>
+            <input type="text" name="q04a" placeholder="Ej: $3.500.000">
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Ciclo de venta</label>
+            <input type="text" name="q04b" placeholder="Ej: 4–6 semanas">
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">05.</span> ¿Qué los diferencia de otros fabricantes de módulos / construcción tradicional?</label>
+        <textarea name="q05" placeholder="Qué ventajas tiene Iron Block que la competencia no tiene..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">06.</span> ¿En qué zonas geográficas operan hoy? ¿Hay zonas a las que quieren expandirse?</label>
+        <div class="grid-2">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Zonas actuales</label>
+            <textarea name="q06a" placeholder="Ej: Santa Fe, Rafaela, Rosario..."></textarea>
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Zonas de expansión</label>
+            <textarea name="q06b" placeholder="Ej: Buenos Aires, Córdoba..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B. MARCA Y PERCEPCIÓN -->
+    <div class="subseccion">
+      <p class="sub-tag">B</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Marca y percepción</h3>
+
+      <div class="campo">
+        <label><span class="n">07.</span> ¿Cómo describirían hoy la personalidad de la marca? ¿Y cómo les gustaría que se perciba?</label>
+        <div class="grid-2">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Personalidad actual</label>
+            <textarea name="q07a" placeholder="Cómo se percibe Iron Block hoy..."></textarea>
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Personalidad deseada</label>
+            <textarea name="q07b" placeholder="Cómo queremos que se perciba..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">08.</span> Cuando dicen "humanizar" — ¿qué imaginan exactamente?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="q08" value="equipo"> <span>Mostrar al equipo</span></label>
+          <label class="opcion"><input type="checkbox" name="q08" value="detras"> <span>Detrás de escena</span></label>
+          <label class="opcion"><input type="checkbox" name="q08" value="tono"> <span>Tono más informal</span></label>
+          <label class="opcion"><input type="checkbox" name="q08" value="otro"> <span>Otro</span></label>
+        </div>
+        <input type="text" name="q08b" placeholder="¿Qué más imaginan?" style="margin-top:12px;">
+      </div>
+
+      <div class="campo">
+        <label><span class="n">09.</span> ¿Hay marcas (de cualquier rubro) que admiren por cómo se comunican?</label>
+        <textarea name="q09" placeholder="Marca — ¿qué les gusta de cómo comunica?"></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">10.</span> ¿Hay algo que nunca querrían que la marca diga o muestre?</label>
+        <textarea name="q10" placeholder="Límites, valores innegociables, temas sensibles..."></textarea>
+      </div>
+    </div>
+
+    <!-- C. ESTADO ACTUAL DEL MARKETING -->
+    <div class="subseccion">
+      <p class="sub-tag">C</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Estado actual del marketing</h3>
+
+      <div class="campo">
+        <label><span class="n">11.</span> ¿Tienen manual de marca, logo en vectores, paleta, tipografías definidas?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q11" value="si"> <span>Sí</span></label>
+          <label class="opcion"><input type="radio" name="q11" value="no"> <span>No</span></label>
+          <label class="opcion"><input type="radio" name="q11" value="parcial"> <span>Parcial</span></label>
+        </div>
+        <p class="nota">Si tienen archivos, enviarlos por WhatsApp.</p>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">12.</span> ¿Qué contenido existente tienen?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="q12" value="taller"> <span>Fotos del taller</span></label>
+          <label class="opcion"><input type="checkbox" name="q12" value="modulos"> <span>Módulos terminados</span></label>
+          <label class="opcion"><input type="checkbox" name="q12" value="instalaciones"> <span>Instalaciones</span></label>
+          <label class="opcion"><input type="checkbox" name="q12" value="equipo"> <span>Fotos del equipo</span></label>
+          <label class="opcion"><input type="checkbox" name="q12" value="video"> <span>Video</span></label>
+          <label class="opcion"><input type="checkbox" name="q12" value="ninguno"> <span>Ninguno</span></label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">13.</span> ¿Qué métricas miran hoy en redes? ¿Hay alguna que les importe especialmente?</label>
+        <textarea name="q13" placeholder="Alcance, seguidores, comentarios, mensajes..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">14.</span> ¿Hacen o hicieron pauta paga?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q14" value="si" id="pauta-si"> <span>Sí</span></label>
+          <label class="opcion"><input type="radio" name="q14" value="no"> <span>No</span></label>
+          <label class="opcion"><input type="radio" name="q14" value="antes" id="pauta-antes"> <span>Antes sí</span></label>
+        </div>
+        <div class="condicional" id="pauta-detalle">
+          <div class="campo" style="margin-bottom:20px;">
+            <label>¿En qué plataformas?</label>
+            <div class="opciones">
+              <label class="opcion"><input type="checkbox" name="q14p" value="meta"> <span>Meta</span></label>
+              <label class="opcion"><input type="checkbox" name="q14p" value="google"> <span>Google</span></label>
+              <label class="opcion"><input type="checkbox" name="q14p" value="tiktok"> <span>TikTok</span></label>
+            </div>
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>¿Con qué resultados?</label>
+            <textarea name="q14r" placeholder="Resultados obtenidos con la pauta..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">15.</span> ¿Qué les gustó y qué no del trabajo anterior? (además de lo ya mencionado)</label>
+        <div class="grid-2">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Lo que funcionó</label>
+            <textarea name="q15a" placeholder="Qué rescatan del trabajo anterior..."></textarea>
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Lo que no funcionó</label>
+            <textarea name="q15b" placeholder="Qué definitivamente no se repite..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">16.</span> ¿Tienen CRM, base de leads o sistema de seguimiento de consultas?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q16" value="si"> <span>Sí</span></label>
+          <label class="opcion"><input type="radio" name="q16" value="no"> <span>No</span></label>
+          <label class="opcion"><input type="radio" name="q16" value="informal"> <span>Informal</span></label>
+        </div>
+        <textarea name="q16b" placeholder="¿Qué herramienta o método usan?" style="margin-top:16px;"></textarea>
+      </div>
+    </div>
+
+    <!-- D. OBJETIVOS Y ÉXITO -->
+    <div class="subseccion">
+      <p class="sub-tag">D</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Objetivos y éxito</h3>
+
+      <div class="campo">
+        <label><span class="n">17.</span> ¿Qué tiene que pasar en los próximos 90 días para que digan "esto está funcionando"?</label>
+        <textarea name="q17" placeholder="Describí el escenario ideal en 90 días..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">18.</span> ¿Cuál es el objetivo prioritario?</label>
+        <div class="opciones" style="flex-direction:column;">
+          <label class="opcion"><input type="radio" name="q18" value="consultas"> <span>Más consultas</span></label>
+          <label class="opcion"><input type="radio" name="q18" value="reconocimiento"> <span>Más reconocimiento de marca</span></label>
+          <label class="opcion"><input type="radio" name="q18" value="percepcion"> <span>Mejor percepción</span></label>
+          <label class="opcion"><input type="radio" name="q18" value="ventas"> <span>Ventas concretas</span></label>
+          <label class="opcion"><input type="radio" name="q18" value="todos"> <span>Todos por igual</span></label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">19.</span> ¿Hay objetivos de ventas o leads concretos para 2026?</label>
+        <textarea name="q19" placeholder="Número de leads mensuales, facturación objetivo, cantidad de proyectos..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">20.</span> ¿Cómo van a medir si el rebranding fue exitoso?</label>
+        <textarea name="q20" placeholder="Métricas, sensaciones, indicadores cualitativos o cuantitativos..."></textarea>
+      </div>
+    </div>
+
+    <!-- E. INVERSIÓN Y RECURSOS -->
+    <div class="subseccion">
+      <p class="sub-tag">E</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Inversión y recursos</h3>
+
+      <div class="campo">
+        <label><span class="n">21.</span> ¿Cuánto están dispuestos a invertir mensualmente?</label>
+        <div class="grid-2x2" style="margin-top:16px;">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Producción + estrategia + planificación $</label>
+            <input type="text" name="q21a" placeholder="$">
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Contenido UGC $</label>
+            <input type="text" name="q21b" placeholder="$">
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Inversión en Meta Ads $</label>
+            <input type="text" name="q21c" placeholder="$">
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Total mensual estimado $</label>
+            <input type="text" name="q21d" placeholder="Suma total">
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">22.</span> ¿Hay presupuesto separado para producción audiovisual / fotos profesionales?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q22" value="si"> <span>Sí</span></label>
+          <label class="opcion"><input type="radio" name="q22" value="no"> <span>No</span></label>
+          <label class="opcion"><input type="radio" name="q22" value="evaluar"> <span>A evaluar</span></label>
+        </div>
+        <input type="text" name="q22b" placeholder="Monto aproximado $" style="margin-top:12px;">
+      </div>
+
+      <div class="campo">
+        <label><span class="n">23.</span> ¿Tienen disponibilidad para sesiones de producción de contenido?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q23" value="si"> <span>Sí</span></label>
+          <label class="opcion"><input type="radio" name="q23" value="no"> <span>No</span></label>
+          <label class="opcion"><input type="radio" name="q23" value="coordinar"> <span>A coordinar</span></label>
+        </div>
+        <input type="text" name="q23b" placeholder="¿Con qué frecuencia?" style="margin-top:12px;">
+      </div>
+    </div>
+
+    <!-- F. PROCESO Y APROBACIONES -->
+    <div class="subseccion">
+      <p class="sub-tag">F</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Proceso y aprobaciones</h3>
+
+      <div class="campo">
+        <label><span class="n">24.</span> ¿Quién aprueba el contenido antes de publicarse?</label>
+        <input type="text" name="q24a" placeholder="Nombre y rol">
+        <div class="opciones" style="margin-top:16px;">
+          <label class="opcion"><input type="radio" name="q24b" value="una"> <span>Una sola persona</span></label>
+          <label class="opcion"><input type="radio" name="q24b" value="varias"> <span>Varias personas</span></label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">25.</span> ¿Cuál es el tiempo de respuesta razonable para aprobaciones?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q25" value="24hs"> <span>24 hs</span></label>
+          <label class="opcion"><input type="radio" name="q25" value="48hs"> <span>48 hs</span></label>
+          <label class="opcion"><input type="radio" name="q25" value="72hs"> <span>72 hs</span></label>
+          <label class="opcion"><input type="radio" name="q25" value="otro"> <span>Otro</span></label>
+        </div>
+        <input type="text" name="q25b" placeholder="Especificá si es otro" style="margin-top:12px;">
+      </div>
+
+      <div class="campo">
+        <label><span class="n">26.</span> ¿Quién del equipo está disponible para grabar / aparecer en cámara?</label>
+        <textarea name="q26" placeholder="Nombre(s) y rol(es)..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">27.</span> ¿Hay temporadas, lanzamientos o eventos clave en el año que tengamos que tener en el calendario?</label>
+        <textarea name="q27" placeholder="Temporada alta, ferias, lanzamientos de productos, fechas importantes..."></textarea>
+      </div>
+    </div>
+
+    <!-- G. COMUNICACIÓN Y CANALES -->
+    <div class="subseccion">
+      <p class="sub-tag">G</p>
+      <div class="sub-divider"></div>
+      <h3 class="sub-titulo">Comunicación y canales</h3>
+
+      <div class="campo">
+        <label><span class="n">28.</span> ¿Confirmamos WhatsApp grupal como canal principal de comunicación?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q28" value="si"> <span>Sí, confirmado</span></label>
+          <label class="opcion"><input type="radio" name="q28" value="otro"> <span>Prefiero otro medio</span></label>
+        </div>
+        <input type="text" name="q28b" placeholder="¿Cuál?" style="margin-top:12px;">
+      </div>
+
+      <div class="campo">
+        <label><span class="n">29.</span> ¿Qué día y horario les sirve para la reunión semanal fija?</label>
+        <div class="grid-2">
+          <div class="campo" style="margin-bottom:0;">
+            <label>Día</label>
+            <select name="q29a">
+              <option value="" disabled selected>Seleccioná un día</option>
+              <option>Lunes</option>
+              <option>Martes</option>
+              <option>Miércoles</option>
+              <option>Jueves</option>
+              <option>Viernes</option>
+            </select>
+          </div>
+          <div class="campo" style="margin-bottom:0;">
+            <label>Horario</label>
+            <input type="text" name="q29b" placeholder="Ej: 10:00 hs">
+          </div>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">30.</span> ¿Quiénes participan de la reunión semanal del lado de Iron Block?</label>
+        <textarea name="q30" placeholder="Nombre(s) y rol(es)..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label><span class="n">31.</span> ¿Tienen o van a abrir TikTok / YouTube?</label>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="q31" value="tiktok-tiene"> <span>Tenemos TikTok</span></label>
+          <label class="opcion"><input type="checkbox" name="q31" value="tiktok-abrir"> <span>Vamos a abrir TikTok</span></label>
+          <label class="opcion"><input type="checkbox" name="q31" value="yt-tiene"> <span>Tenemos YouTube</span></label>
+          <label class="opcion"><input type="checkbox" name="q31" value="yt-abrir"> <span>Vamos a abrir YouTube</span></label>
+          <label class="opcion"><input type="checkbox" name="q31" value="ninguno"> <span>No por ahora</span></label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</section>
+
+
+<!-- ══════════════════════════════ CIERRE ══════════════════════════════ -->
+<footer class="sec-cierre">
+  <p class="cierre-texto">
+    Con este brief vamos a poder generar una propuesta acertada para ustedes.
+  </p>
+
+  <button class="btn-enviar" id="btn-enviar" onclick="enviarBrief()">Listo, terminé</button>
+
+  <div id="msg-exito">¡Perfecto! Ahora guardá el PDF y mandámelo por WhatsApp.</div>
+
+  <button class="btn-pdf" id="btn-pdf" onclick="window.print()">Guardar como PDF</button>
+
+  <div class="cierre-divider"></div>
+
+  <div class="cierre-logo logo">
+    <svg viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M78,12 L12,12 L12,88 L78,88 L78,72 L28,72 L28,28 L78,28 Z" fill="white"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-cami">cami</span>
+      <span class="logo-clipp">CLIPP</span>
+    </div>
+  </div>
+
+  <p class="cierre-contacto" style="margin-top:16px;">+54 9 3492 370473</p>
+</footer>
+
+<script>
+  // Mostrar/ocultar detalle de pauta
+  document.querySelectorAll('input[name="q14"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var detalle = document.getElementById('pauta-detalle');
+      if (this.value === 'si' || this.value === 'antes') {
+        detalle.classList.add('visible');
+      } else {
+        detalle.classList.remove('visible');
+      }
+    });
+  });
+
+  function enviarBrief() {
+    document.getElementById('btn-enviar').style.display = 'none';
+    document.getElementById('msg-exito').classList.add('visible');
+    document.getElementById('btn-pdf').classList.add('visible');
+    document.getElementById('btn-pdf').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+
+</body>
+</html>
