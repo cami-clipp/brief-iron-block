@@ -558,6 +558,10 @@
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
     }
 
     html, body { margin: 0; padding: 0; }
@@ -592,6 +596,12 @@
 
     .campo input, .campo textarea, .campo select {
       border-bottom: 1.5px solid #B5432A !important;
+      overflow: visible !important;
+      white-space: normal !important;
+    }
+
+    .opcion span {
+      white-space: nowrap !important;
     }
   }
 
