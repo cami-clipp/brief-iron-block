@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Iron Block · cami.clipp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ladrillo: #B5432A;
+    --negro: #1A1A1A;
+    --crema: #FAF6F1;
+    --lino: #EDE3D6;
+    --gris: #7A706B;
+    --blanco: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--negro);
+    background: var(--crema);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LOGO ── */
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo svg { width: 32px; height: 32px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-cami { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 18px; }
+  .logo-clipp { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; margin-top: 2px; }
+
+  /* ── PORTADA ── */
+  .portada {
+    background: var(--ladrillo);
+    min-height: 100vh;
+    padding: 56px 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--blanco);
+  }
+  .portada .logo-cami, .portada .logo-clipp { color: var(--blanco); }
+
+  .portada-centro { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 80px 0 40px; }
+  .portada-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+  .portada-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(52px, 9vw, 100px); line-height: 1.0; letter-spacing: -0.02em; }
+  .portada-titulo em { font-style: italic; font-weight: 400; display: block; }
+  .portada-subtitulo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 24px; letter-spacing: 0.04em; }
+
+  .portada-footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 24px; }
+  .portada-fecha { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; }
+
+  /* ── SECCIONES ── */
+  .sec { padding: 80px 64px; }
+  .sec-crema { background: var(--crema); }
+  .sec-lino { background: var(--lino); }
+  .sec-negro { background: var(--negro); color: var(--blanco); }
+  .sec-ladrillo { background: var(--ladrillo); color: var(--blanco); }
+
+  @media (max-width: 768px) {
+    .portada { padding: 40px 28px 36px; }
+    .sec { padding: 56px 24px; }
+  }
+
+  .tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 12px; }
+  .tag-blanco { color: rgba(255,255,255,0.55); }
+  .divider { width: 100%; height: 1px; background: var(--ladrillo); margin-bottom: 48px; }
+  .divider-blanco { background: rgba(255,255,255,0.2); }
+
+  .titulo-sec { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin-bottom: 8px; }
+  .titulo-sec em { font-style: italic; font-weight: 400; display: block; }
+
+  /* ── DIAGNÓSTICO ── */
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .diag-grid { grid-template-columns: 1fr; } }
+
+  .diag-card { background: var(--lino); padding: 36px 32px; }
+  .diag-card.dark { background: var(--negro); }
+  .diag-card.accent { background: var(--ladrillo); }
+
+  .diag-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 20px; }
+  .diag-card.dark .diag-label, .diag-card.accent .diag-label { color: rgba(255,255,255,0.6); }
+
+  .diag-card ul { list-style: none; }
+  .diag-card ul li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; padding-left: 16px; position: relative; margin-bottom: 6px; color: var(--negro); }
+  .diag-card.dark ul li, .diag-card.accent ul li { color: var(--blanco); }
+  .diag-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--ladrillo); font-size: 12px; }
+  .diag-card.dark ul li::before, .diag-card.accent ul li::before { color: rgba(255,255,255,0.5); }
+
+  /* ── INSIGHT ── */
+  .insight { background: var(--negro); padding: 56px 64px; }
+  .insight-texto { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(20px, 3vw, 30px); line-height: 1.6; color: var(--blanco); max-width: 780px; }
+  .insight-texto strong { font-style: normal; font-weight: 700; color: var(--ladrillo); }
+
+  /* ── ESTRATEGIA ── */
+  .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .pilares { grid-template-columns: 1fr; } }
+
+  .pilar { padding: 40px 32px; background: var(--lino); }
+  .pilar-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 48px; color: var(--ladrillo); line-height: 1; margin-bottom: 16px; opacity: 0.4; }
+  .pilar-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; margin-bottom: 12px; line-height: 1.2; }
+  .pilar-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.75; color: var(--gris); }
+
+  /* ── SERVICIOS ── */
+  .servicios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .servicios-grid { grid-template-columns: 1fr; } }
+
+  .servicio { background: var(--crema); padding: 36px 32px; border-left: 3px solid var(--ladrillo); }
+  .servicio-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+  .servicio ul { list-style: none; }
+  .servicio ul li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.8; padding-left: 14px; position: relative; color: var(--gris); }
+  .servicio ul li::before { content: '→'; position: absolute; left: 0; color: var(--ladrillo); font-size: 11px; }
+
+  .servicio-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 8px; }
+
+  /* ── AMOBLAMIENTO DIGITAL ── */
+  .amb-highlight { background: var(--ladrillo); padding: 48px 64px; margin-top: 2px; }
+  .amb-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(24px, 3.5vw, 38px); color: var(--blanco); margin-bottom: 16px; }
+  .amb-titulo em { font-style: italic; font-weight: 400; }
+  .amb-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.8); max-width: 680px; }
+  .amb-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  @media (max-width: 768px) { .amb-items { grid-template-columns: 1fr; } .amb-highlight { padding: 40px 24px; } }
+  .amb-item { border-top: 1px solid rgba(255,255,255,0.3); padding-top: 16px; }
+  .amb-item-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+  .amb-item-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: var(--blanco); line-height: 1.6; }
+
+  /* ── EQUIPO ── */
+  .equipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .equipo-grid { grid-template-columns: 1fr; } }
+
+  .perfil { background: var(--lino); padding: 40px 36px; }
+  .perfil-rol { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 16px; }
+  .perfil-nombre { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 26px; margin-bottom: 4px; }
+  .perfil-nombre em { font-style: italic; font-weight: 400; font-size: 22px; }
+  .perfil-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; color: var(--gris); margin-top: 16px; }
+
+  /* ── INVERSIÓN ── */
+  .inversion-tabla { margin-top: 48px; }
+  .inv-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--lino); }
+  .inv-row:first-child { border-top: 1px solid var(--lino); }
+  .inv-nombre { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; }
+  .inv-detalle { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 2px; }
+  .inv-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: var(--ladrillo); white-space: nowrap; }
+  .inv-total { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 0; background: var(--negro); margin-top: 2px; padding: 24px 32px; }
+  .inv-total-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .inv-total-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--blanco); }
+  .inv-nota { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 16px; font-style: italic; }
+
+  /* ── MÉTRICAS ── */
+  .metricas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .metricas-grid { grid-template-columns: 1fr; } }
+  .metrica { background: var(--crema); padding: 32px 28px; }
+  .metrica-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 40px; color: var(--ladrillo); font-weight: 400; line-height: 1; margin-bottom: 8px; }
+  .metrica-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--negro); margin-bottom: 8px; }
+  .metrica-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: var(--gris); line-height: 1.6; }
+
+  /* ── PRÓXIMOS PASOS ── */
+  .pasos { margin-top: 48px; }
+  .paso { display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start; margin-bottom: 32px; }
+  .paso-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; color: rgba(255,255,255,0.25); line-height: 1; }
+  .paso-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; color: var(--blanco); margin-bottom: 4px; }
+  .paso-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  /* ── CIERRE ── */
+  .cierre { background: var(--ladrillo); padding: 80px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .cierre-frase { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(20px, 3vw, 28px); color: var(--blanco); max-width: 600px; line-height: 1.6; margin-bottom: 48px; }
+  .cierre-divider { width: 48px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 32px; }
+  .cierre-contacto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; margin-top: 16px; }
+
+  /* PRINT */
+  @page { margin: 0; size: A4; }
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; hyphens: none !important; }
+    .portada { min-height: 100vh; page-break-after: always; background: #B5432A !important; }
+    .sec-ladrillo, .amb-highlight, .cierre { background: #B5432A !important; }
+    .sec-negro, .insight, .inv-total { background: #1A1A1A !important; }
+    .sec-lino, .diag-card, .pilar, .perfil { background: #EDE3D6 !important; }
+    .sec-crema, .servicio, .metrica { background: #FAF6F1 !important; }
+    .diag-card.dark { background: #1A1A1A !important; }
+    .diag-card.accent { background: #B5432A !important; }
+    .sec { page-break-inside: avoid; }
+    .btn-print { display: none !important; }
+  }
+
+  /* Botón imprimir */
+  .btn-print {
+    position: fixed; bottom: 32px; right: 32px;
+    background: var(--ladrillo); color: var(--blanco);
+    border: none; padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; border-radius: 0;
+    box-shadow: 0 4px 24px rgba(181,67,42,0.35);
+    z-index: 100;
+  }
+  .btn-print:hover { background: var(--negro); }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<header class="portada">
+  <div class="logo">
+    <svg viewBox="0 0 90 100" fill="none"><path d="M78,12 L12,12 L12,88 L78,88 L78,72 L28,72 L28,28 L78,28 Z" fill="white"/></svg>
+    <div class="logo-text"><span class="logo-cami">cami</span><span class="logo-clipp">CLIPP</span></div>
+  </div>
+  <div class="portada-centro">
+    <p class="portada-tag">Propuesta comercial · Abril 2026</p>
+    <h1 class="portada-titulo">Iron Block<em>Módulos</em></h1>
+    <p class="portada-subtitulo">Estrategia de contenido · Rebranding · Gestión de redes</p>
+  </div>
+  <div class="portada-footer">
+    <span class="portada-fecha">Preparado por cami.clipp · 28 / 04 / 2026</span>
+  </div>
+</header>
+
+
+<!-- DIAGNÓSTICO -->
+<section class="sec sec-crema">
+  <p class="tag">Diagnóstico</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Lo que vemos<em>hoy</em></h2>
+  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-top:12px;max-width:640px;line-height:1.7;">Basado en la información compartida en el brief, identificamos el punto de partida real de Iron Block — sin filtros.</p>
+
+  <div class="diag-grid">
+    <div class="diag-card">
+      <p class="diag-label">Lo que tiene</p>
+      <ul>
+        <li>Producto diferenciado: velocidad de entrega, financiación y posventa</li>
+        <li>Meta Ads activo con inversión de $250k–$300k/mes — principal canal de venta</li>
+        <li>Contenido visual existente: taller, módulos, instalaciones y video</li>
+        <li>Equipo disponible y dispuesto a aparecer en cámara</li>
+        <li>Estructura B2B sólida + potencial en el sector agro</li>
+        <li>Reels con buen rendimiento comprobado</li>
+      </ul>
+    </div>
+
+    <div class="diag-card">
+      <p class="diag-label">Lo que falta</p>
+      <ul>
+        <li>Manual de marca completo — identidad visual parcial</li>
+        <li>Tono de comunicación definido y consistente</li>
+        <li>Estrategia de contenido orgánico que complemente la pauta</li>
+        <li>CRM / sistema de seguimiento de leads (en construcción)</li>
+        <li>Presencia en TikTok (a desarrollar)</li>
+        <li>Interacción real con la audiencia: encuestas, entrevistas, detrás de escena</li>
+      </ul>
+    </div>
+
+    <div class="diag-card dark">
+      <p class="diag-label" style="color:rgba(255,255,255,0.5);">Oportunidad detectada</p>
+      <ul>
+        <li style="color:white;">El sector agro es un nicho de alto ticket con casi nada de competencia en redes</li>
+        <li style="color:white;">Box House comunica bien — Iron Block puede comunicar mejor con su historia real</li>
+        <li style="color:white;">La financiación es un diferencial poco comunicado que puede mover la aguja en B2C</li>
+        <li style="color:white;">Avantix es la referencia local — el estándar está ahí para superarlo</li>
+      </ul>
+    </div>
+
+    <div class="diag-card accent">
+      <p class="diag-label" style="color:rgba(255,255,255,0.6);">El problema central</p>
+      <ul>
+        <li style="color:white;">La marca no comunica lo que realmente es: una empresa ágil, cercana y con producto innovador</li>
+        <li style="color:white;">Hay inversión en pauta pero sin contenido orgánico que construya confianza</li>
+        <li style="color:white;">El equipo quiere humanizar pero no tiene quién lleve adelante esa transformación</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- INSIGHT -->
+<div class="insight">
+  <p class="insight-texto">
+    Iron Block no necesita más pauta. Necesita una <strong>marca que justifique la inversión</strong>: contenido que genere confianza antes de que el lead llegue al formulario, y una identidad visual que diga "somos serios" sin dejar de decir "somos cercanos".
+  </p>
+</div>
+
+
+<!-- ESTRATEGIA -->
+<section class="sec sec-lino">
+  <p class="tag">Estrategia</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Los tres pilares<em>del trabajo</em></h2>
+
+  <div class="pilares">
+    <div class="pilar">
+      <div class="pilar-num">01</div>
+      <h3 class="pilar-titulo">Rebranding visual y de tono</h3>
+      <p class="pilar-texto">Desarrollamos una identidad que refleje lo que Iron Block realmente es: una empresa rafaelina ágil, con producto innovador y equipo humano. Paleta, tipografía, grilla de contenido y voz definidas.</p>
+    </div>
+    <div class="pilar">
+      <div class="pilar-num">02</div>
+      <h3 class="pilar-titulo">Contenido orgánico que convierte</h3>
+      <p class="pilar-texto">Planificación semanal con mix de formatos: Reels (ya probados), detrás de escena, testimoniales, proceso de fabricación y contenido educativo sobre construcción modular. TikTok se activa como canal de expansión.</p>
+    </div>
+    <div class="pilar">
+      <div class="pilar-num">03</div>
+      <h3 class="pilar-titulo">Comunidad e interacción real</h3>
+      <p class="pilar-texto">Encuestas, entrevistas al equipo, preguntas a la audiencia. El objetivo es transformar seguidores en leads calificados a través de la confianza, no solo del alcance pagado.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section class="sec sec-crema">
+  <p class="tag">Alcance del servicio</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Qué incluye<em>cada mes</em></h2>
+
+  <div class="servicios-grid">
+    <div class="servicio">
+      <p class="servicio-tag">Estrategia y planificación</p>
+      <h3 class="servicio-titulo">Dirección creativa</h3>
+      <ul>
+        <li>Estrategia mensual de contenido</li>
+        <li>Calendario editorial semanal</li>
+        <li>Línea de comunicación por formato</li>
+        <li>Reunión semanal fija (lunes 10hs, Franco y Leonardo)</li>
+        <li>Reporte mensual de métricas y ajustes</li>
+      </ul>
+    </div>
+
+    <div class="servicio">
+      <p class="servicio-tag">Producción de contenido</p>
+      <h3 class="servicio-titulo">Ejecución y gestión</h3>
+      <ul>
+        <li>Guiones para Reels, Stories y TikTok</li>
+        <li>Diseño de piezas gráficas (feed, portadas, highlights)</li>
+        <li>Copywriting de captions con tono definido</li>
+        <li>Gestión de publicación y comunidad</li>
+        <li>Coordinación de sesiones de producción in situ</li>
+      </ul>
+    </div>
+
+    <div class="servicio">
+      <p class="servicio-tag">Rebranding</p>
+      <h3 class="servicio-titulo">Identidad visual</h3>
+      <ul>
+        <li>Revisión y cierre del manual de marca</li>
+        <li>Grilla de feed rediseñada</li>
+        <li>Highlights y stories templates</li>
+        <li>Lineamientos de tono y voz de marca</li>
+        <li>Aplicación consistente en todos los formatos</li>
+      </ul>
+    </div>
+
+    <div class="servicio">
+      <p class="servicio-tag">UGC y contenido propio</p>
+      <h3 class="servicio-titulo">Rostro de marca</h3>
+      <ul>
+        <li>Contenido con rostro de cami.clipp hablando por la marca</li>
+        <li>Contenido con el equipo de Iron Block en cámara</li>
+        <li>Detrás de escena del taller y proceso de fabricación</li>
+        <li>Encuestas, preguntas y formato de comunidad</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- AMOBLAMIENTO DIGITAL -->
+<div class="amb-highlight">
+  <p class="tag tag-blanco" style="margin-bottom:16px;">Propuesta adicional</p>
+  <h2 class="amb-titulo">Amoblamiento<em>digital</em></h2>
+  <p class="amb-texto">Una primera impresión que cierre la venta antes de que hablen. El perfil de Iron Block tiene que comunicar en 3 segundos quiénes son, qué hacen y por qué confiarles un proyecto. Esto no es diseño de contenido — es arquitectura de percepción.</p>
+  <div class="amb-items">
+    <div class="amb-item">
+      <p class="amb-item-titulo">Bio optimizada</p>
+      <p class="amb-item-texto">Texto, palabras clave y link estratégico que filtren y capturen al lead correcto.</p>
+    </div>
+    <div class="amb-item">
+      <p class="amb-item-titulo">Highlights de marca</p>
+      <p class="amb-item-texto">Carpetas visuales que muestren productos, proceso, testimoniales y financiación al instante.</p>
+    </div>
+    <div class="amb-item">
+      <p class="amb-item-titulo">Feed inicial</p>
+      <p class="amb-item-texto">Las primeras 9 publicaciones diseñadas para que el perfil se vea profesional desde el día uno del rebranding.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- EQUIPO -->
+<section class="sec sec-lino">
+  <p class="tag">El equipo</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Quiénes están<em>detrás</em></h2>
+
+  <div class="equipo-grid">
+    <div class="perfil">
+      <p class="perfil-rol">Estrategia</p>
+      <h3 class="perfil-nombre">Rocco Valentino<em>Chiavassa</em></h3>
+      <p class="perfil-texto">Especialista en el rubro de la construcción y el mercado inmobiliario. Aporta la mirada estratégica, el conocimiento del sector y la comprensión del cliente de Iron Block. Diseña el marco en el que se mueve toda la comunicación.</p>
+    </div>
+    <div class="perfil">
+      <p class="perfil-rol">Implementación</p>
+      <h3 class="perfil-nombre">Camila<em>Aguilar</em></h3>
+      <p class="perfil-texto">Directora creativa y productora de contenido de cami.clipp. Toma la estrategia y la convierte en contenido real, consistente y con identidad. Gestiona las redes, produce, guioniza y mantiene la marca viva semana a semana.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- MÉTRICAS -->
+<section class="sec sec-negro">
+  <p class="tag tag-blanco">Cómo medimos el éxito</p>
+  <div class="divider divider-blanco"></div>
+  <h2 class="titulo-sec" style="color:var(--blanco);">Los números<em style="color:var(--ladrillo);">que importan</em></h2>
+
+  <div class="metricas-grid">
+    <div class="metrica">
+      <div class="metrica-num">+40%</div>
+      <p class="metrica-label">Interacción</p>
+      <p class="metrica-texto">Objetivo de engagement rate en los primeros 90 días vs. baseline actual.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">Leads</div>
+      <p class="metrica-label">Calificados</p>
+      <p class="metrica-texto">Medición mensual de consultas entrantes por redes, diferenciando calidad de volumen.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">60m²</div>
+      <p class="metrica-label">Objetivo mínimo</p>
+      <p class="metrica-texto">60 a 120m² vendidos mensuales como indicador de impacto real en el negocio.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">TikTok</div>
+      <p class="metrica-label">Nuevo canal</p>
+      <p class="metrica-texto">Apertura y primeros 30 días con métricas de arranque: alcance y primeros seguidores.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">Agro</div>
+      <p class="metrica-label">Nicho objetivo</p>
+      <p class="metrica-texto">Contenido específico para el sector agropecuario como canal de expansión B2B.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">Neuquén</div>
+      <p class="metrica-label">Expansión</p>
+      <p class="metrica-texto">Estrategia de contenido geolocalizada para preparar el ingreso a nuevas provincias.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- INVERSIÓN -->
+<section class="sec sec-crema">
+  <p class="tag">Inversión</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Lo que<em>cuesta</em></h2>
+
+  <div class="inversion-tabla">
+    <div class="inv-row">
+      <div>
+        <p class="inv-nombre">Estrategia + planificación + gestión de redes</p>
+        <p class="inv-detalle">Dirección creativa mensual, calendario editorial, reuniones semanales, reportes</p>
+      </div>
+      <div class="inv-monto">USD 600</div>
+    </div>
+    <div class="inv-row">
+      <div>
+        <p class="inv-nombre">Amoblamiento digital</p>
+        <p class="inv-detalle">Una sola vez · Bio, highlights, feed inicial de 9 piezas, rebranding aplicado</p>
+      </div>
+      <div class="inv-monto">A cotizar</div>
+    </div>
+    <div class="inv-row">
+      <div>
+        <p class="inv-nombre">Sesiones de producción in situ</p>
+        <p class="inv-detalle">Coordinación y producción de contenido en las instalaciones de Iron Block</p>
+      </div>
+      <div class="inv-monto">A cotizar</div>
+    </div>
+  </div>
+
+  <div class="inv-total">
+    <div>
+      <p class="inv-total-label">Inversión mensual base</p>
+    </div>
+    <div class="inv-total-monto">USD 600</div>
+  </div>
+  <p class="inv-nota">* La inversión en Meta Ads ($250k–$300k/mes) se mantiene por fuera y es manejada por Iron Block. El amoblamiento digital y las producciones se cotizan por separado según alcance.</p>
+</section>
+
+
+<!-- PRÓXIMOS PASOS -->
+<section class="sec sec-negro">
+  <p class="tag tag-blanco">¿Cómo arrancamos?</p>
+  <div class="divider divider-blanco"></div>
+  <h2 class="titulo-sec" style="color:var(--blanco);">Próximos<em style="color:var(--ladrillo);">pasos</em></h2>
+
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div>
+        <p class="paso-titulo">Aprobación de propuesta</p>
+        <p class="paso-texto">Franco confirma avance. Se define fecha de inicio y se agenda la reunión de kickoff.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div>
+        <p class="paso-titulo">Kickoff estratégico</p>
+        <p class="paso-texto">Reunión de una hora con Franco, Leonardo y el equipo de cami.clipp + Rocco. Definimos tono, prioridades y primeras acciones.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div>
+        <p class="paso-titulo">Amoblamiento digital</p>
+        <p class="paso-texto">Primeras dos semanas: rebranding del perfil, bio, highlights y feed inicial. Iron Block empieza a verse distinto antes de que salga el primer contenido nuevo.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <div>
+        <p class="paso-titulo">Primera planificación mensual</p>
+        <p class="paso-texto">Calendario de contenido para el mes 1, con formatos, guiones y fechas de producción. Aprobación en 24hs según lo acordado.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">5</div>
+      <div>
+        <p class="paso-titulo">Go live</p>
+        <p class="paso-texto">Publicación del primer contenido bajo la nueva identidad. A partir de acá, reuniones los lunes a las 10hs y ritmo semanal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CIERRE -->
+<footer class="cierre">
+  <p class="cierre-frase">Iron Block tiene todo para comunicar distinto. Nosotros tenemos todo para hacerlo pasar.</p>
+  <div class="cierre-divider"></div>
+  <div class="logo">
+    <svg viewBox="0 0 90 100" fill="none"><path d="M78,12 L12,12 L12,88 L78,88 L78,72 L28,72 L28,28 L78,28 Z" fill="white"/></svg>
+    <div class="logo-text"><span class="logo-cami" style="color:white;">cami</span><span class="logo-clipp" style="color:white;">CLIPP</span></div>
+  </div>
+  <p class="cierre-contacto">+54 9 3492 370473</p>
+</footer>
+
+<button class="btn-print" onclick="window.print()">Guardar PDF</button>
+
+</body>
+</html>
