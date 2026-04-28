@@ -9,11 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ladrillo: #B5432A;
+    --acento: #1A1A1A;
     --negro: #1A1A1A;
     --crema: #FAF6F1;
     --lino: #EDE3D6;
     --gris: #7A706B;
+    --medio: #4A4540;
     --blanco: #ffffff;
   }
 
@@ -27,16 +28,15 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── LOGO ── */
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo svg { width: 32px; height: 32px; }
   .logo-text { display: flex; flex-direction: column; line-height: 1; }
   .logo-cami { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 18px; }
   .logo-clipp { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 6px; text-transform: uppercase; margin-top: 2px; }
 
-  /* ── PORTADA ── */
+  /* PORTADA */
   .portada {
-    background: var(--ladrillo);
+    background: var(--negro);
     min-height: 100vh;
     padding: 56px 64px 48px;
     display: flex;
@@ -45,160 +45,187 @@
     color: var(--blanco);
   }
   .portada .logo-cami, .portada .logo-clipp { color: var(--blanco); }
-
   .portada-centro { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 80px 0 40px; }
-  .portada-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+  .portada-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
   .portada-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(52px, 9vw, 100px); line-height: 1.0; letter-spacing: -0.02em; }
-  .portada-titulo em { font-style: italic; font-weight: 400; display: block; }
-  .portada-subtitulo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 24px; letter-spacing: 0.04em; }
+  .portada-titulo em { font-style: italic; font-weight: 400; display: block; color: rgba(255,255,255,0.55); }
+  .portada-subtitulo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; color: rgba(255,255,255,0.5); margin-top: 24px; letter-spacing: 0.04em; }
+  .portada-footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; }
+  .portada-fecha { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; }
 
-  .portada-footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 24px; }
-  .portada-fecha { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; }
-
-  /* ── SECCIONES ── */
+  /* SECCIONES */
   .sec { padding: 80px 64px; }
   .sec-crema { background: var(--crema); }
   .sec-lino { background: var(--lino); }
   .sec-negro { background: var(--negro); color: var(--blanco); }
-  .sec-ladrillo { background: var(--ladrillo); color: var(--blanco); }
+  .sec-medio { background: var(--medio); color: var(--blanco); }
 
   @media (max-width: 768px) {
     .portada { padding: 40px 28px 36px; }
     .sec { padding: 56px 24px; }
   }
 
-  .tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 12px; }
-  .tag-blanco { color: rgba(255,255,255,0.55); }
-  .divider { width: 100%; height: 1px; background: var(--ladrillo); margin-bottom: 48px; }
-  .divider-blanco { background: rgba(255,255,255,0.2); }
+  .tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; }
+  .tag-claro { color: rgba(255,255,255,0.4); }
+  .divider { width: 100%; height: 1px; background: var(--lino); margin-bottom: 48px; }
+  .divider-oscuro { background: rgba(255,255,255,0.12); }
 
   .titulo-sec { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin-bottom: 8px; }
   .titulo-sec em { font-style: italic; font-weight: 400; display: block; }
 
-  /* ── DIAGNÓSTICO ── */
+  /* DIAGNÓSTICO */
   .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
   @media (max-width: 768px) { .diag-grid { grid-template-columns: 1fr; } }
 
   .diag-card { background: var(--lino); padding: 36px 32px; }
   .diag-card.dark { background: var(--negro); }
-  .diag-card.accent { background: var(--ladrillo); }
-
-  .diag-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 20px; }
-  .diag-card.dark .diag-label, .diag-card.accent .diag-label { color: rgba(255,255,255,0.6); }
-
+  .diag-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gris); margin-bottom: 20px; }
+  .diag-card.dark .diag-label { color: rgba(255,255,255,0.4); }
   .diag-card ul { list-style: none; }
-  .diag-card ul li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; padding-left: 16px; position: relative; margin-bottom: 6px; color: var(--negro); }
-  .diag-card.dark ul li, .diag-card.accent ul li { color: var(--blanco); }
-  .diag-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--ladrillo); font-size: 12px; }
-  .diag-card.dark ul li::before, .diag-card.accent ul li::before { color: rgba(255,255,255,0.5); }
+  .diag-card ul li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; padding-left: 16px; position: relative; margin-bottom: 6px; color: var(--medio); }
+  .diag-card.dark ul li { color: rgba(255,255,255,0.75); }
+  .diag-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--gris); font-size: 12px; }
+  .diag-card.dark ul li::before { color: rgba(255,255,255,0.25); }
 
-  /* ── INSIGHT ── */
-  .insight { background: var(--negro); padding: 56px 64px; }
-  .insight-texto { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(20px, 3vw, 30px); line-height: 1.6; color: var(--blanco); max-width: 780px; }
-  .insight-texto strong { font-style: normal; font-weight: 700; color: var(--ladrillo); }
+  /* INSIGHT */
+  .insight { background: var(--lino); padding: 64px; }
+  .insight-texto { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.8vw, 28px); line-height: 1.65; color: var(--negro); max-width: 780px; }
+  .insight-texto strong { font-style: normal; font-weight: 700; }
 
-  /* ── ESTRATEGIA ── */
+  /* COMPETENCIA */
+  .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } }
+  .comp-card { background: var(--crema); padding: 36px 28px; border-top: 2px solid var(--lino); }
+  .comp-card.iron { background: var(--negro); border-top-color: var(--negro); }
+  .comp-nombre { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; margin-bottom: 6px; }
+  .comp-card.iron .comp-nombre { color: var(--blanco); }
+  .comp-claim { font-family: 'DM Sans', sans-serif; font-weight: 300; font-style: italic; font-size: 13px; color: var(--gris); margin-bottom: 20px; border-bottom: 1px solid var(--lino); padding-bottom: 16px; }
+  .comp-card.iron .comp-claim { color: rgba(255,255,255,0.45); border-bottom-color: rgba(255,255,255,0.1); }
+  .comp-dif { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .comp-card.iron .comp-dif { color: rgba(255,255,255,0.45); }
+  .comp-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.75; color: var(--gris); }
+  .comp-card.iron .comp-texto { color: rgba(255,255,255,0.7); }
+  .comp-opp { background: var(--lino); padding: 24px 28px; margin-top: 2px; grid-column: 1 / -1; }
+  .comp-opp-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .comp-opp-texto { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; line-height: 1.65; color: var(--negro); }
+
+  /* PILARES */
   .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
   @media (max-width: 768px) { .pilares { grid-template-columns: 1fr; } }
-
   .pilar { padding: 40px 32px; background: var(--lino); }
-  .pilar-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 48px; color: var(--ladrillo); line-height: 1; margin-bottom: 16px; opacity: 0.4; }
-  .pilar-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; margin-bottom: 12px; line-height: 1.2; }
+  .pilar-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 48px; color: var(--negro); line-height: 1; margin-bottom: 16px; opacity: 0.15; }
+  .pilar-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 19px; margin-bottom: 12px; line-height: 1.2; }
   .pilar-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.75; color: var(--gris); }
 
-  /* ── SERVICIOS ── */
+  /* SERVICIOS */
   .servicios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
   @media (max-width: 768px) { .servicios-grid { grid-template-columns: 1fr; } }
-
-  .servicio { background: var(--crema); padding: 36px 32px; border-left: 3px solid var(--ladrillo); }
-  .servicio-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+  .servicio { background: var(--lino); padding: 36px 32px; }
+  .servicio-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .servicio-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; margin-bottom: 16px; }
   .servicio ul { list-style: none; }
   .servicio ul li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.8; padding-left: 14px; position: relative; color: var(--gris); }
-  .servicio ul li::before { content: '→'; position: absolute; left: 0; color: var(--ladrillo); font-size: 11px; }
+  .servicio ul li::before { content: '→'; position: absolute; left: 0; font-size: 11px; }
 
-  .servicio-tag { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 8px; }
-
-  /* ── AMOBLAMIENTO DIGITAL ── */
-  .amb-highlight { background: var(--ladrillo); padding: 48px 64px; margin-top: 2px; }
+  /* AMOBLAMIENTO */
+  .amb { background: var(--negro); padding: 64px; }
   .amb-titulo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(24px, 3.5vw, 38px); color: var(--blanco); margin-bottom: 16px; }
-  .amb-titulo em { font-style: italic; font-weight: 400; }
-  .amb-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.8); max-width: 680px; }
-  .amb-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
-  @media (max-width: 768px) { .amb-items { grid-template-columns: 1fr; } .amb-highlight { padding: 40px 24px; } }
-  .amb-item { border-top: 1px solid rgba(255,255,255,0.3); padding-top: 16px; }
-  .amb-item-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
-  .amb-item-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: var(--blanco); line-height: 1.6; }
+  .amb-titulo em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.5); }
+  .amb-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 680px; }
+  .amb-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+  @media (max-width: 768px) { .amb-items { grid-template-columns: 1fr; } .amb { padding: 40px 24px; } }
+  .amb-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; }
+  .amb-item-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+  .amb-item-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.65; }
 
-  /* ── EQUIPO ── */
+  /* EQUIPO */
   .equipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
   @media (max-width: 768px) { .equipo-grid { grid-template-columns: 1fr; } }
-
-  .perfil { background: var(--lino); padding: 40px 36px; }
-  .perfil-rol { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ladrillo); margin-bottom: 16px; }
+  .perfil { background: var(--crema); padding: 40px 36px; }
+  .perfil-rol { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gris); margin-bottom: 16px; }
   .perfil-nombre { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 26px; margin-bottom: 4px; }
   .perfil-nombre em { font-style: italic; font-weight: 400; font-size: 22px; }
   .perfil-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; color: var(--gris); margin-top: 16px; }
 
-  /* ── INVERSIÓN ── */
-  .inversion-tabla { margin-top: 48px; }
-  .inv-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--lino); }
-  .inv-row:first-child { border-top: 1px solid var(--lino); }
-  .inv-nombre { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; }
-  .inv-detalle { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 2px; }
-  .inv-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: var(--ladrillo); white-space: nowrap; }
-  .inv-total { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 0; background: var(--negro); margin-top: 2px; padding: 24px 32px; }
-  .inv-total-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
-  .inv-total-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--blanco); }
-  .inv-nota { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 16px; font-style: italic; }
+  /* MÉTRICAS */
+  .metricas-nota { background: var(--lino); padding: 32px 40px; margin-top: 48px; border-left: 3px solid var(--negro); }
+  .metricas-nota-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); margin-bottom: 10px; }
+  .metricas-nota-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.75; color: var(--medio); }
 
-  /* ── MÉTRICAS ── */
-  .metricas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  .metricas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 24px; }
   @media (max-width: 768px) { .metricas-grid { grid-template-columns: 1fr; } }
   .metrica { background: var(--crema); padding: 32px 28px; }
-  .metrica-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 40px; color: var(--ladrillo); font-weight: 400; line-height: 1; margin-bottom: 8px; }
+  .metrica-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; color: var(--negro); font-weight: 400; line-height: 1; margin-bottom: 8px; }
   .metrica-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--negro); margin-bottom: 8px; }
   .metrica-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: var(--gris); line-height: 1.6; }
 
-  /* ── PRÓXIMOS PASOS ── */
-  .pasos { margin-top: 48px; }
-  .paso { display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start; margin-bottom: 32px; }
-  .paso-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; color: rgba(255,255,255,0.25); line-height: 1; }
-  .paso-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; color: var(--blanco); margin-bottom: 4px; }
-  .paso-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  /* INVERSIÓN */
+  .inv-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--lino); gap: 24px; }
+  .inv-row:first-child { border-top: 1px solid var(--lino); }
+  .inv-nombre { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; }
+  .inv-detalle { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 3px; }
+  .inv-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: var(--negro); white-space: nowrap; }
+  .inv-total { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 32px; background: var(--negro); margin-top: 2px; gap: 24px; }
+  .inv-total-label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .inv-total-monto { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--blanco); }
+  .inv-nota { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--gris); margin-top: 16px; font-style: italic; }
 
-  /* ── CIERRE ── */
-  .cierre { background: var(--ladrillo); padding: 80px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .cierre-frase { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(20px, 3vw, 28px); color: var(--blanco); max-width: 600px; line-height: 1.6; margin-bottom: 48px; }
-  .cierre-divider { width: 48px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 32px; }
-  .cierre-contacto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; margin-top: 16px; }
+  /* PRÓXIMOS PASOS */
+  .pasos { margin-top: 48px; }
+  .paso { display: grid; grid-template-columns: 56px 1fr; gap: 24px; align-items: start; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .paso-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 32px; color: rgba(255,255,255,0.2); line-height: 1; }
+  .paso-titulo { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; color: var(--blanco); margin-bottom: 4px; }
+  .paso-texto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+  /* CIERRE */
+  .cierre { background: var(--negro); padding: 80px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .cierre-frase { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.8vw, 26px); color: rgba(255,255,255,0.8); max-width: 580px; line-height: 1.65; margin-bottom: 48px; }
+  .cierre-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 32px; }
+  .cierre-contacto { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; margin-top: 16px; }
 
   /* PRINT */
-  @page { margin: 0; size: A4; }
+  @page { margin: 1.2cm 1.4cm; size: A4; }
   @media print {
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; hyphens: none !important; }
-    .portada { min-height: 100vh; page-break-after: always; background: #B5432A !important; }
-    .sec-ladrillo, .amb-highlight, .cierre { background: #B5432A !important; }
-    .sec-negro, .insight, .inv-total { background: #1A1A1A !important; }
-    .sec-lino, .diag-card, .pilar, .perfil { background: #EDE3D6 !important; }
-    .sec-crema, .servicio, .metrica { background: #FAF6F1 !important; }
+    html, body { margin: 0; padding: 0; }
+    .portada { min-height: 100vh; page-break-after: always; break-after: page; background: #1A1A1A !important; padding: 48px 52px; margin: -1.2cm -1.4cm; width: calc(100% + 2.8cm); }
+    .sec-negro, .amb, .cierre { background: #1A1A1A !important; }
+    .sec-lino { background: #EDE3D6 !important; }
+    .sec-crema { background: #FAF6F1 !important; }
+    .pilar { background: #EDE3D6 !important; }
+    .comp-opp { background: #EDE3D6 !important; }
+    .comp-card { background: #FAF6F1 !important; }
+    .comp-card.iron { background: #1A1A1A !important; }
+    .metrica { background: #FAF6F1 !important; }
+    .perfil { background: #FAF6F1 !important; }
+    .diag-card { background: #EDE3D6 !important; }
     .diag-card.dark { background: #1A1A1A !important; }
-    .diag-card.accent { background: #B5432A !important; }
-    .sec { page-break-inside: avoid; }
+    .inv-total { background: #1A1A1A !important; }
+    .insight { background: #EDE3D6 !important; }
+    .metricas-nota { background: #EDE3D6 !important; }
+    .servicio { background: #EDE3D6 !important; }
+    /* No evitar breaks en secciones — dejar fluir */
+    .sec { padding: 40px 0; }
+    .diag-card { page-break-inside: avoid; break-inside: avoid; }
+    .pilar { page-break-inside: avoid; break-inside: avoid; }
+    .comp-card { page-break-inside: avoid; break-inside: avoid; }
+    .metrica { page-break-inside: avoid; break-inside: avoid; }
+    .perfil { page-break-inside: avoid; break-inside: avoid; }
+    .paso { page-break-inside: avoid; break-inside: avoid; }
+    .inv-row { page-break-inside: avoid; break-inside: avoid; }
     .btn-print { display: none !important; }
   }
 
-  /* Botón imprimir */
   .btn-print {
     position: fixed; bottom: 32px; right: 32px;
-    background: var(--ladrillo); color: var(--blanco);
+    background: var(--negro); color: var(--blanco);
     border: none; padding: 14px 28px;
     font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 11px;
     letter-spacing: 0.2em; text-transform: uppercase;
-    cursor: pointer; border-radius: 0;
-    box-shadow: 0 4px 24px rgba(181,67,42,0.35);
+    cursor: pointer; box-shadow: 0 4px 24px rgba(0,0,0,0.2);
     z-index: 100;
   }
-  .btn-print:hover { background: var(--negro); }
+  .btn-print:hover { background: var(--medio); }
 </style>
 </head>
 <body>
@@ -225,7 +252,7 @@
   <p class="tag">Diagnóstico</p>
   <div class="divider"></div>
   <h2 class="titulo-sec">Lo que vemos<em>hoy</em></h2>
-  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-top:12px;max-width:640px;line-height:1.7;">Basado en la información compartida en el brief, identificamos el punto de partida real de Iron Block — sin filtros.</p>
+  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-top:12px;max-width:640px;line-height:1.7;">Basado en el brief compartido, este es el punto de partida real de Iron Block.</p>
 
   <div class="diag-grid">
     <div class="diag-card">
@@ -233,42 +260,69 @@
       <ul>
         <li>Producto diferenciado: velocidad de entrega, financiación y posventa</li>
         <li>Meta Ads activo con inversión de $250k–$300k/mes — principal canal de venta</li>
-        <li>Contenido visual existente: taller, módulos, instalaciones y video</li>
-        <li>Equipo disponible y dispuesto a aparecer en cámara</li>
-        <li>Estructura B2B sólida + potencial en el sector agro</li>
         <li>Reels con buen rendimiento comprobado</li>
+        <li>Contenido visual existente: taller, módulos, instalaciones, video</li>
+        <li>Equipo disponible y dispuesto a aparecer en cámara</li>
+        <li>Estructura B2B sólida con potencial real en el sector agro</li>
       </ul>
     </div>
 
     <div class="diag-card">
       <p class="diag-label">Lo que falta</p>
       <ul>
+        <li>Diferencial comunicado con claridad en el perfil</li>
         <li>Manual de marca completo — identidad visual parcial</li>
         <li>Tono de comunicación definido y consistente</li>
         <li>Estrategia de contenido orgánico que complemente la pauta</li>
-        <li>CRM / sistema de seguimiento de leads (en construcción)</li>
-        <li>Presencia en TikTok (a desarrollar)</li>
-        <li>Interacción real con la audiencia: encuestas, entrevistas, detrás de escena</li>
+        <li>CRM / seguimiento de leads (en construcción)</li>
+        <li>Interacción real con la audiencia: encuestas, entrevistas, comunidad</li>
       </ul>
     </div>
 
-    <div class="diag-card dark">
-      <p class="diag-label" style="color:rgba(255,255,255,0.5);">Oportunidad detectada</p>
+    <div class="diag-card dark" style="grid-column: 1 / -1;">
+      <p class="diag-label">El problema central</p>
       <ul>
-        <li style="color:white;">El sector agro es un nicho de alto ticket con casi nada de competencia en redes</li>
-        <li style="color:white;">Box House comunica bien — Iron Block puede comunicar mejor con su historia real</li>
-        <li style="color:white;">La financiación es un diferencial poco comunicado que puede mover la aguja en B2C</li>
-        <li style="color:white;">Avantix es la referencia local — el estándar está ahí para superarlo</li>
+        <li>Iron Block no cuenta qué lo hace distinto. El perfil actual no diferencia ni conquista.</li>
+        <li>Hay inversión en pauta pero sin contenido orgánico que construya confianza antes del clic.</li>
+        <li>La financiación — su diferencial más fuerte — no está siendo comunicada como lo que es: una ventaja competitiva real.</li>
       </ul>
     </div>
+  </div>
+</section>
 
-    <div class="diag-card accent">
-      <p class="diag-label" style="color:rgba(255,255,255,0.6);">El problema central</p>
-      <ul>
-        <li style="color:white;">La marca no comunica lo que realmente es: una empresa ágil, cercana y con producto innovador</li>
-        <li style="color:white;">Hay inversión en pauta pero sin contenido orgánico que construya confianza</li>
-        <li style="color:white;">El equipo quiere humanizar pero no tiene quién lleve adelante esa transformación</li>
-      </ul>
+
+<!-- COMPETENCIA -->
+<section class="sec sec-lino">
+  <p class="tag">Panorama competitivo</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">El mercado<em>hoy</em></h2>
+  <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--gris);margin-top:12px;max-width:640px;line-height:1.7;">Entender a la competencia no es para imitarla. Es para encontrar el espacio que solo Iron Block puede ocupar.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <h3 class="comp-nombre">Grossteiner</h3>
+      <p class="comp-claim">"Boxes de lujo"</p>
+      <p class="comp-dif">Qué comunican</p>
+      <p class="comp-texto">Apunta al segmento premium. Su comunicación habla de exclusividad y estética. El precio y el nivel de customización son su territorio.</p>
+    </div>
+
+    <div class="comp-card">
+      <h3 class="comp-nombre">Box House</h3>
+      <p class="comp-claim">"No hay dos boxes iguales"</p>
+      <p class="comp-dif">Qué comunican</p>
+      <p class="comp-texto">Personalización total como propuesta central. Comunica creatividad e identidad única. Ya tienen claro lo que dicen y lo repiten en todo su contenido.</p>
+    </div>
+
+    <div class="comp-card iron">
+      <h3 class="comp-nombre">Iron Block</h3>
+      <p class="comp-claim">¿Qué dice Iron Block hoy?</p>
+      <p class="comp-dif">Lo que tiene para decir</p>
+      <p class="comp-texto">Rapidez de entrega, financiación y posventa. Trabaja con empresas y con el sector agro. Pero nada de esto se ve en el perfil. Ese es el trabajo.</p>
+    </div>
+
+    <div class="comp-opp">
+      <p class="comp-opp-label">El espacio disponible</p>
+      <p class="comp-opp-texto">Ni lujo ni personalización infinita. Iron Block puede ser la opción que te da velocidad, respaldo financiero y seguimiento real. El que cierra proyectos. El que habla con el contador de la empresa agrícola <em>y</em> con el señor que se quiere jubilar e invertir en cabañas en Cayastá. Eso no lo está diciendo nadie.</p>
     </div>
   </div>
 </section>
@@ -277,13 +331,13 @@
 <!-- INSIGHT -->
 <div class="insight">
   <p class="insight-texto">
-    Iron Block no necesita más pauta. Necesita una <strong>marca que justifique la inversión</strong>: contenido que genere confianza antes de que el lead llegue al formulario, y una identidad visual que diga "somos serios" sin dejar de decir "somos cercanos".
+    Avantix no vende módulos. Vende confianza — la que construyó en otro rubro y trasladó. Iron Block tiene que hacer lo mismo: <strong>construir confianza antes de que llegue la consulta</strong>. El contenido es el camino. La financiación es la llave.
   </p>
 </div>
 
 
 <!-- ESTRATEGIA -->
-<section class="sec sec-lino">
+<section class="sec sec-crema">
   <p class="tag">Estrategia</p>
   <div class="divider"></div>
   <h2 class="titulo-sec">Los tres pilares<em>del trabajo</em></h2>
@@ -291,25 +345,25 @@
   <div class="pilares">
     <div class="pilar">
       <div class="pilar-num">01</div>
-      <h3 class="pilar-titulo">Rebranding visual y de tono</h3>
-      <p class="pilar-texto">Desarrollamos una identidad que refleje lo que Iron Block realmente es: una empresa rafaelina ágil, con producto innovador y equipo humano. Paleta, tipografía, grilla de contenido y voz definidas.</p>
+      <h3 class="pilar-titulo">Definir el diferencial y comunicarlo</h3>
+      <p class="pilar-texto">Velocidad, financiación y posventa no son características — son razones de compra. El trabajo empieza por hacer que eso se vea en cada pieza de contenido, antes de que alguien pregunte el precio.</p>
     </div>
     <div class="pilar">
       <div class="pilar-num">02</div>
-      <h3 class="pilar-titulo">Contenido orgánico que convierte</h3>
-      <p class="pilar-texto">Planificación semanal con mix de formatos: Reels (ya probados), detrás de escena, testimoniales, proceso de fabricación y contenido educativo sobre construcción modular. TikTok se activa como canal de expansión.</p>
+      <h3 class="pilar-titulo">Rebranding visual y de tono</h3>
+      <p class="pilar-texto">Desarrollamos una identidad que refleje lo que Iron Block realmente es: una empresa rafaelina ágil, con producto innovador y equipo humano. Paleta, tipografía, voz y grilla de contenido definidas.</p>
     </div>
     <div class="pilar">
       <div class="pilar-num">03</div>
-      <h3 class="pilar-titulo">Comunidad e interacción real</h3>
-      <p class="pilar-texto">Encuestas, entrevistas al equipo, preguntas a la audiencia. El objetivo es transformar seguidores en leads calificados a través de la confianza, no solo del alcance pagado.</p>
+      <h3 class="pilar-titulo">Contenido que genera leads, no solo alcance</h3>
+      <p class="pilar-texto">Mix de Reels (ya probados), detrás de escena, proceso de fabricación, casos reales y contenido para el nicho agro. TikTok se activa como canal de expansión. La comunidad se construye con interacción real.</p>
     </div>
   </div>
 </section>
 
 
 <!-- SERVICIOS -->
-<section class="sec sec-crema">
+<section class="sec sec-lino">
   <p class="tag">Alcance del servicio</p>
   <div class="divider"></div>
   <h2 class="titulo-sec">Qué incluye<em>cada mes</em></h2>
@@ -321,8 +375,8 @@
       <ul>
         <li>Estrategia mensual de contenido</li>
         <li>Calendario editorial semanal</li>
-        <li>Línea de comunicación por formato</li>
-        <li>Reunión semanal fija (lunes 10hs, Franco y Leonardo)</li>
+        <li>Línea de comunicación por formato y audiencia</li>
+        <li>Reunión semanal fija (lunes 10hs)</li>
         <li>Reporte mensual de métricas y ajustes</li>
       </ul>
     </div>
@@ -335,7 +389,7 @@
         <li>Diseño de piezas gráficas (feed, portadas, highlights)</li>
         <li>Copywriting de captions con tono definido</li>
         <li>Gestión de publicación y comunidad</li>
-        <li>Coordinación de sesiones de producción in situ</li>
+        <li>Coordinación de sesiones de producción</li>
       </ul>
     </div>
 
@@ -357,8 +411,8 @@
       <ul>
         <li>Contenido con rostro de cami.clipp hablando por la marca</li>
         <li>Contenido con el equipo de Iron Block en cámara</li>
-        <li>Detrás de escena del taller y proceso de fabricación</li>
-        <li>Encuestas, preguntas y formato de comunidad</li>
+        <li>Detrás de escena del taller y proceso</li>
+        <li>Encuestas, entrevistas y formatos de comunidad</li>
       </ul>
     </div>
   </div>
@@ -366,29 +420,29 @@
 
 
 <!-- AMOBLAMIENTO DIGITAL -->
-<div class="amb-highlight">
-  <p class="tag tag-blanco" style="margin-bottom:16px;">Propuesta adicional</p>
+<div class="amb">
+  <p class="tag tag-claro" style="margin-bottom:16px;">Propuesta adicional</p>
   <h2 class="amb-titulo">Amoblamiento<em>digital</em></h2>
-  <p class="amb-texto">Una primera impresión que cierre la venta antes de que hablen. El perfil de Iron Block tiene que comunicar en 3 segundos quiénes son, qué hacen y por qué confiarles un proyecto. Esto no es diseño de contenido — es arquitectura de percepción.</p>
+  <p class="amb-texto">El perfil tiene que comunicar en tres segundos quiénes son, qué hacen y por qué confiarles un proyecto. Esto no es diseño de contenido — es arquitectura de primera impresión.</p>
   <div class="amb-items">
     <div class="amb-item">
       <p class="amb-item-titulo">Bio optimizada</p>
-      <p class="amb-item-texto">Texto, palabras clave y link estratégico que filtren y capturen al lead correcto.</p>
+      <p class="amb-item-texto">Texto, palabras clave y link estratégico que filtren y capturen al lead correcto desde el primer contacto.</p>
     </div>
     <div class="amb-item">
       <p class="amb-item-titulo">Highlights de marca</p>
-      <p class="amb-item-texto">Carpetas visuales que muestren productos, proceso, testimoniales y financiación al instante.</p>
+      <p class="amb-item-texto">Carpetas visuales que muestren productos, proceso, financiación y testimoniales al instante.</p>
     </div>
     <div class="amb-item">
       <p class="amb-item-titulo">Feed inicial</p>
-      <p class="amb-item-texto">Las primeras 9 publicaciones diseñadas para que el perfil se vea profesional desde el día uno del rebranding.</p>
+      <p class="amb-item-texto">Las primeras 9 publicaciones diseñadas para que el perfil se vea distinto desde el día uno del rebranding.</p>
     </div>
   </div>
 </div>
 
 
 <!-- EQUIPO -->
-<section class="sec sec-lino">
+<section class="sec sec-crema">
   <p class="tag">El equipo</p>
   <div class="divider"></div>
   <h2 class="titulo-sec">Quiénes están<em>detrás</em></h2>
@@ -397,7 +451,7 @@
     <div class="perfil">
       <p class="perfil-rol">Estrategia</p>
       <h3 class="perfil-nombre">Rocco Valentino<em>Chiavassa</em></h3>
-      <p class="perfil-texto">Especialista en el rubro de la construcción y el mercado inmobiliario. Aporta la mirada estratégica, el conocimiento del sector y la comprensión del cliente de Iron Block. Diseña el marco en el que se mueve toda la comunicación.</p>
+      <p class="perfil-texto">Se mantiene informado sobre el rubro de la construcción y el mercado inmobiliario. Aporta la mirada estratégica y la comprensión del cliente de Iron Block, y diseña el marco en el que se mueve toda la comunicación.</p>
     </div>
     <div class="perfil">
       <p class="perfil-rol">Implementación</p>
@@ -409,41 +463,46 @@
 
 
 <!-- MÉTRICAS -->
-<section class="sec sec-negro">
-  <p class="tag tag-blanco">Cómo medimos el éxito</p>
-  <div class="divider divider-blanco"></div>
-  <h2 class="titulo-sec" style="color:var(--blanco);">Los números<em style="color:var(--ladrillo);">que importan</em></h2>
+<section class="sec sec-lino">
+  <p class="tag">Cómo medimos el éxito</p>
+  <div class="divider"></div>
+  <h2 class="titulo-sec">Los números<em>que importan</em></h2>
+
+  <div class="metricas-nota">
+    <p class="metricas-nota-titulo">Una aclaración importante</p>
+    <p class="metricas-nota-texto">Si el 80% de las ventas pasa por Meta Ads — que es lo normal en este rubro — no podemos depender de Instagram como parámetro de venta. El éxito del trabajo de contenido se mide en <strong>leads calificados y consultas entrantes</strong>, no en ventas directas por redes. Las ventas las mueve la pauta. El contenido construye la confianza que hace que el lead avance.</p>
+  </div>
 
   <div class="metricas-grid">
     <div class="metrica">
-      <div class="metrica-num">+40%</div>
-      <p class="metrica-label">Interacción</p>
-      <p class="metrica-texto">Objetivo de engagement rate en los primeros 90 días vs. baseline actual.</p>
-    </div>
-    <div class="metrica">
       <div class="metrica-num">Leads</div>
       <p class="metrica-label">Calificados</p>
-      <p class="metrica-texto">Medición mensual de consultas entrantes por redes, diferenciando calidad de volumen.</p>
+      <p class="metrica-texto">Consultas entrantes por redes, diferenciando calidad de volumen. Es el indicador principal del trabajo orgánico.</p>
     </div>
     <div class="metrica">
-      <div class="metrica-num">60m²</div>
-      <p class="metrica-label">Objetivo mínimo</p>
-      <p class="metrica-texto">60 a 120m² vendidos mensuales como indicador de impacto real en el negocio.</p>
-    </div>
-    <div class="metrica">
-      <div class="metrica-num">TikTok</div>
-      <p class="metrica-label">Nuevo canal</p>
-      <p class="metrica-texto">Apertura y primeros 30 días con métricas de arranque: alcance y primeros seguidores.</p>
+      <div class="metrica-num">+40%</div>
+      <p class="metrica-label">Interacción</p>
+      <p class="metrica-texto">Objetivo de engagement rate en los primeros 90 días como señal de que el contenido conecta con la audiencia correcta.</p>
     </div>
     <div class="metrica">
       <div class="metrica-num">Agro</div>
       <p class="metrica-label">Nicho objetivo</p>
-      <p class="metrica-texto">Contenido específico para el sector agropecuario como canal de expansión B2B.</p>
+      <p class="metrica-texto">Consultas específicas del sector agropecuario como señal de que la comunicación está llegando al cliente B2B correcto.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">TikTok</div>
+      <p class="metrica-label">Nuevo canal</p>
+      <p class="metrica-texto">Apertura y primeros 30 días con métricas de arranque: alcance, reproducciones y primeros seguidores.</p>
+    </div>
+    <div class="metrica">
+      <div class="metrica-num">60m²</div>
+      <p class="metrica-label">Referencia de ventas</p>
+      <p class="metrica-texto">60 a 120m² vendidos mensuales como referencia de impacto en el negocio. No depende solo de la comunicación, pero es el número que usamos junto a la pauta para entender si la estrategia está empujando.</p>
     </div>
     <div class="metrica">
       <div class="metrica-num">Neuquén</div>
       <p class="metrica-label">Expansión</p>
-      <p class="metrica-texto">Estrategia de contenido geolocalizada para preparar el ingreso a nuevas provincias.</p>
+      <p class="metrica-texto">Contenido geolocalizado para preparar el ingreso a nuevas provincias como indicador de alcance geográfico.</p>
     </div>
   </div>
 </section>
@@ -455,81 +514,60 @@
   <div class="divider"></div>
   <h2 class="titulo-sec">Lo que<em>cuesta</em></h2>
 
-  <div class="inversion-tabla">
+  <div style="margin-top:48px;">
     <div class="inv-row">
       <div>
         <p class="inv-nombre">Estrategia + planificación + gestión de redes</p>
-        <p class="inv-detalle">Dirección creativa mensual, calendario editorial, reuniones semanales, reportes</p>
+        <p class="inv-detalle">Dirección creativa mensual, calendario editorial, reuniones semanales, reportes y gestión de comunidad</p>
       </div>
       <div class="inv-monto">USD 600</div>
     </div>
     <div class="inv-row">
       <div>
         <p class="inv-nombre">Amoblamiento digital</p>
-        <p class="inv-detalle">Una sola vez · Bio, highlights, feed inicial de 9 piezas, rebranding aplicado</p>
+        <p class="inv-detalle">Una sola vez · Bio, highlights, feed inicial de 9 piezas, rebranding aplicado al perfil</p>
       </div>
       <div class="inv-monto">A cotizar</div>
     </div>
     <div class="inv-row">
       <div>
-        <p class="inv-nombre">Sesiones de producción in situ</p>
-        <p class="inv-detalle">Coordinación y producción de contenido en las instalaciones de Iron Block</p>
+        <p class="inv-nombre">Sesiones de producción</p>
+        <p class="inv-detalle">Coordinación y producción de contenido in situ según frecuencia acordada</p>
       </div>
       <div class="inv-monto">A cotizar</div>
     </div>
   </div>
 
   <div class="inv-total">
-    <div>
-      <p class="inv-total-label">Inversión mensual base</p>
-    </div>
+    <div><p class="inv-total-label">Inversión mensual base</p></div>
     <div class="inv-total-monto">USD 600</div>
   </div>
-  <p class="inv-nota">* La inversión en Meta Ads ($250k–$300k/mes) se mantiene por fuera y es manejada por Iron Block. El amoblamiento digital y las producciones se cotizan por separado según alcance.</p>
+  <p class="inv-nota">* La inversión en Meta Ads ($250k–$300k/mes) se mantiene por fuera y es gestionada por Iron Block. El amoblamiento digital y las producciones se cotizan por separado según el alcance que definamos al inicio.</p>
 </section>
 
 
 <!-- PRÓXIMOS PASOS -->
 <section class="sec sec-negro">
-  <p class="tag tag-blanco">¿Cómo arrancamos?</p>
-  <div class="divider divider-blanco"></div>
-  <h2 class="titulo-sec" style="color:var(--blanco);">Próximos<em style="color:var(--ladrillo);">pasos</em></h2>
+  <p class="tag tag-claro">¿Cómo arrancamos?</p>
+  <div class="divider divider-oscuro"></div>
+  <h2 class="titulo-sec" style="color:var(--blanco);">Próximos<em style="color:rgba(255,255,255,0.45);">pasos</em></h2>
 
   <div class="pasos">
     <div class="paso">
       <div class="paso-num">1</div>
-      <div>
-        <p class="paso-titulo">Aprobación de propuesta</p>
-        <p class="paso-texto">Franco confirma avance. Se define fecha de inicio y se agenda la reunión de kickoff.</p>
-      </div>
+      <div><p class="paso-titulo">Aprobación de propuesta</p><p class="paso-texto">Franco confirma avance y se define fecha de inicio.</p></div>
     </div>
     <div class="paso">
       <div class="paso-num">2</div>
-      <div>
-        <p class="paso-titulo">Kickoff estratégico</p>
-        <p class="paso-texto">Reunión de una hora con Franco, Leonardo y el equipo de cami.clipp + Rocco. Definimos tono, prioridades y primeras acciones.</p>
-      </div>
+      <div><p class="paso-titulo">Amoblamiento digital</p><p class="paso-texto">Primeras dos semanas: rebranding del perfil, bio, highlights y feed inicial. Iron Block empieza a verse diferente antes de que salga el primer contenido nuevo.</p></div>
     </div>
     <div class="paso">
       <div class="paso-num">3</div>
-      <div>
-        <p class="paso-titulo">Amoblamiento digital</p>
-        <p class="paso-texto">Primeras dos semanas: rebranding del perfil, bio, highlights y feed inicial. Iron Block empieza a verse distinto antes de que salga el primer contenido nuevo.</p>
-      </div>
+      <div><p class="paso-titulo">Primera planificación mensual</p><p class="paso-texto">Calendario de contenido para el mes 1, con formatos, guiones y fechas. Aprobación por Franco en 24hs.</p></div>
     </div>
     <div class="paso">
       <div class="paso-num">4</div>
-      <div>
-        <p class="paso-titulo">Primera planificación mensual</p>
-        <p class="paso-texto">Calendario de contenido para el mes 1, con formatos, guiones y fechas de producción. Aprobación en 24hs según lo acordado.</p>
-      </div>
-    </div>
-    <div class="paso">
-      <div class="paso-num">5</div>
-      <div>
-        <p class="paso-titulo">Go live</p>
-        <p class="paso-texto">Publicación del primer contenido bajo la nueva identidad. A partir de acá, reuniones los lunes a las 10hs y ritmo semanal.</p>
-      </div>
+      <div><p class="paso-titulo">Go live</p><p class="paso-texto">Publicación del primer contenido bajo la nueva identidad. Reuniones los lunes a las 10hs y ritmo semanal a partir de ahí.</p></div>
     </div>
   </div>
 </section>
